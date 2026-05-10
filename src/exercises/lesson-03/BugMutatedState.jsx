@@ -10,11 +10,10 @@
 
 import { useState } from 'react';
 export default function BugMutatedState() {
-  let [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
 
   function handleAdd() {
-    count++;
-    setCount(count);
+    setCount((count) => count + 1);
   }
 
   return (
@@ -27,3 +26,7 @@ export default function BugMutatedState() {
 
 // Explanation:
 // (Write your explanation here)
+/*The code is simple so it runs fine. The only weird behavior I notice is the time it takes for the update to happen. 
+But for more complex applications it is better to not mutate the variable.
+state variables should be const instead of let as we don't want the variable to mutate for reference.
+*/
